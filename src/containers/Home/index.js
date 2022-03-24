@@ -6,6 +6,7 @@ import { setPokemon } from '../../actions';
 import PokemonList from '../../components/PokemonList';
 import Searcher from '../../components/Searcher';
 import './styles.css';
+import axios from 'axios';
 
 
 function Home() {
@@ -16,8 +17,15 @@ function Home() {
   useEffect(() => {
     getPokemons(20)
     .then((res) => {
-      dispatch(setPokemon(res.data.results))
+      const pokemons = res.data.results
+      console.log(pokemons)
+      return Promise.all(pokemons.map(pokemon => axios.get(pokemon.url)))
       })
+    .then((pokemonResponse) => {
+      const pokemonsData = pokemonResponse.map(responses => responses.data)
+      dispatch(setPokemon(pokemonsData))
+
+    })
   }, [])
 
   return (

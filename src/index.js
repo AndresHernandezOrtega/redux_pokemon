@@ -4,11 +4,23 @@ import App from './containers/App';
 import './index.css';
 
 // redux
-import { createStore } from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import pokemonReducer from './reducers/pokemonReducer';
 
-const store = createStore(pokemonReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+import { logActions } from './middlewares';
+
+
+
+const composedEnhancers = compose(
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+    applyMiddleware(logActions)
+)
+
+const store = createStore(
+    pokemonReducer,
+    composedEnhancers
+)
 
 ReactDOM.render(
     <Provider store={store}>

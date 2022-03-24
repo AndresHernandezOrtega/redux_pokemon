@@ -8,9 +8,15 @@ export default function PokemonCard({pokemon}) {
     <Grid.Column mobile={16} tablet={8} computer={4} >
       <div className={styles.PokemonCard}>
           <Icon name='favorite' color={FAV_COLOR}/>
-          <Image centered src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/132.png" alt="Pokemon front"/>
+          <Image centered src={pokemon.sprites.front_default} alt="Pokemon front"/>
           <p className={styles.PokemonCardTitle}>{pokemon.name}</p>
-          <Label color={MAIN_COLOR}> Normal </Label>
+
+          {
+            pokemon.types.map((type) => 
+              <Label  key={'pokemon_type_' + type.type.slot} color={MAIN_COLOR}> {type.type.name}</Label>
+            )
+
+          }
       </div>
     </Grid.Column>
   )
