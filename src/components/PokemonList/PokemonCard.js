@@ -9,7 +9,7 @@ export default function PokemonCard({pokemon}) {
       <div className={styles.PokemonCard}>
           <Icon name='favorite' color={FAV_COLOR}/>
           <Image centered src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/132.png" alt="Pokemon front"/>
-          <p className={styles.PokemonCardTitle}>Ditto</p>
+          <p className={styles.PokemonCardTitle}>{pokemon.name}</p>
           <Label color={MAIN_COLOR}> Normal </Label>
       </div>
     </Grid.Column>
