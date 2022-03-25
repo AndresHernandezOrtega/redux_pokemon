@@ -13,7 +13,7 @@ export default function PokemonCard({pokemon}) {
 
           {
             pokemon.types.map((type) => 
-              <Label  key={'pokemon_type_' + type.type.slot} color={MAIN_COLOR}> {type.type.name}</Label>
+              <Label  key={'pokemon_type_' + type.slot} color={MAIN_COLOR}> {type.type.name}</Label>
             )
 
           }

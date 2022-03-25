@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './containers/App';
 import './index.css';
+import thunk from 'redux-thunk';
 
 // redux
 import { createStore, compose, applyMiddleware } from 'redux';
@@ -10,11 +11,11 @@ import pokemonReducer from './reducers/pokemonReducer';
 
 import { logActions } from './middlewares';
 
+const customCompose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 
-const composedEnhancers = compose(
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-    applyMiddleware(logActions)
+const composedEnhancers = customCompose(
+    applyMiddleware(thunk, logActions)
 )
 
 const store = createStore(
