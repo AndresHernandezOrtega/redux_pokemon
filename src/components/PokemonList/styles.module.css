@@ -9,3 +9,12 @@
     text-align: center;
     color: #999;
   }
+
+  .pokemonCardFavorite{
+    background-color: transparent;
+    border: none;
+  }
+
+  .pokemonCardFavorite:hover{
+    cursor: pointer;
+  }
