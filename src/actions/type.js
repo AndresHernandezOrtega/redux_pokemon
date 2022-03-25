@@ -1,3 +1,0 @@
-export const SET_POKEMON = "SET_POKEMON"
-export const TOGGLE_LOADER = "TOGGLE_LOADER"
-export const UPDATE_FAVORITES = "UPDATE_FAVORITES"

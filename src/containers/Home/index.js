@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux'
 
 // actions
-import { getPokemonWithDetails, updateFavoritesAction } from '../../actions';
+import { updateFavoritesAction, fetchPokemons} from '../../slices/pokemonSlice';
 import Loader from '../../components/Loader';
 
 import PokemonList from '../../components/PokemonList';
@@ -16,7 +16,7 @@ function Home() {
   const state = useSelector(state => state)
 
   useEffect(() => {
-      dispatch(getPokemonWithDetails())
+      dispatch(fetchPokemons())
       dispatch(updateFavoritesAction())
   }, [])
 
@@ -24,8 +24,8 @@ function Home() {
   return (
     <div className='Home'>
       <Searcher />
-      <Loader loading={state.loading}/> 
-      < PokemonList pokemons={state.list}/>
+      <Loader loading={state.ui.loading}/> 
+      < PokemonList pokemons={state.pokemon.list}/>
     </div>
   );
 }

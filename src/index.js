@@ -7,7 +7,8 @@ import thunk from 'redux-thunk';
 // redux
 import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import pokemonReducer from './reducers/pokemonReducer';
+import rootReducer from './reducers/rootReducer';
+
 
 import { logActions } from './middlewares';
 
@@ -19,7 +20,7 @@ const composedEnhancers = customCompose(
 )
 
 const store = createStore(
-    pokemonReducer,
+    rootReducer,
     composedEnhancers
 )
 

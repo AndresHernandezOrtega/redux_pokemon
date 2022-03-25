@@ -1,6 +1,5 @@
 import React from 'react'
 import styles from './styles.module.css'
-import { getPokemons } from '../../api/services/getPokemons'
 
 import PokemonCard from './PokemonCard.js'
 import { Grid } from 'semantic-ui-react'
